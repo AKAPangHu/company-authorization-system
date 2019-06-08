@@ -31,7 +31,7 @@ public class Product {
      * 出发时间
      */
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date departureTime;
     private String departureTimeStr;
     /**

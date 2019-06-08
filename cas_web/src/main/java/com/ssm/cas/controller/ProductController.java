@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,19 +28,7 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @RequestMapping("/save.do")
-    public String save(Product product){
-        productService.save(product);
-        return "redirect:/product/findAll.do";
-    }
-
-    @RequestMapping("/delete.do")
-    public String delete(@RequestParam(name = "ids") List<String> productIds){
-        productService.deleteByProductIds(productIds);
-        return "redirect:/product/findAll.do";
-    }
-
-    @RequestMapping("/findAll.do")
+    @RequestMapping(method = RequestMethod.GET)
     public ModelAndView findAll() throws Exception {
         ModelAndView mv = new ModelAndView();
         List<Product> products = productService.findAll();
@@ -48,4 +37,14 @@ public class ProductController {
         return mv;
     }
 
+    @RequestMapping(value = "/new" , method = RequestMethod.GET)
+    public String jumpToAdd(){
+        return "product-add";
+    }
+
+    @RequestMapping(value = "/new", method = RequestMethod.POST)
+    public String add(Product product){
+        productService.save(product);
+        return "redirect:/product";
+    }
 }

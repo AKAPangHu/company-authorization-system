@@ -5,7 +5,9 @@ import com.ssm.cas.domain.Orders;
 import com.ssm.cas.service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,9 +29,9 @@ public class OrdersController {
         this.ordersService = ordersService;
     }
 
-    @RequestMapping("/findAll.do")
-    public ModelAndView findAll(@RequestParam(name = "page", defaultValue = "1") Integer page,
-                                @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) throws Exception {
+    @RequestMapping(method = RequestMethod.GET)
+    public ModelAndView findAll(@RequestParam(name = "page",required = false, defaultValue = "1") Integer page,
+                                @RequestParam(name = "pageSize", required = false, defaultValue = "10") Integer pageSize) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("orders-page-list");
         List<Orders> orders = ordersService.findAll(page, pageSize);
@@ -38,8 +40,8 @@ public class OrdersController {
         return modelAndView;
     }
 
-    @RequestMapping("/findById.do")
-    public ModelAndView findById(@RequestParam(name = "id", required = true) String id) throws Exception {
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ModelAndView findById(@PathVariable String id) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
         Orders orders = ordersService.findById(id);
         modelAndView.addObject("orders", orders);
