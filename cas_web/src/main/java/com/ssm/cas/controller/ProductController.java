@@ -38,12 +38,12 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/new" , method = RequestMethod.GET)
-    public String jumpToAdd(){
+    public String jumpToSave(){
         return "product-add";
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public String add(Product product){
+    public String save(Product product){
         productService.save(product);
         return "redirect:/product";
     }

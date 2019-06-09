@@ -7,7 +7,9 @@ import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,7 +29,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping("/findAll.do")
+    @RequestMapping(method = RequestMethod.GET)
     public ModelAndView findAll() {
         ModelAndView modelAndView = new ModelAndView();
         List<UserInfo> userInfos = userService.findAll();
@@ -37,14 +39,19 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping("/save.do")
-    public String save(UserInfo userInfo){
-        userService.save(userInfo);
-        return "redirect:/user/findAll.do";
+    @RequestMapping(value = "/new" , method = RequestMethod.GET)
+    public String jumpToSave(){
+        return "user-add";
     }
 
-    @RequestMapping("/findById.do")
-    public ModelAndView findById(String id) throws Exception {
+    @RequestMapping(value = "/new", method = RequestMethod.POST)
+    public String save(UserInfo userInfo){
+        userService.save(userInfo);
+        return "redirect:/user";
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ModelAndView findById(@PathVariable String id) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
         UserInfo userInfo = userService.findById(id);
 
@@ -53,8 +60,8 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping("/findUserByIdAndAllRole.do")
-    public ModelAndView findUserByIdAndAllRole(@RequestParam(name = "id") String userId) throws Exception {
+    @RequestMapping(value = "/{id}/available", method = RequestMethod.GET)
+    public ModelAndView findUserByIdAndAllRole(@PathVariable(name = "id") String userId) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
         UserInfo userInfo = userService.findById(userId);
         List<Role> roles = userService.findOthersRoles(userId);
@@ -65,11 +72,11 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping("/addRoleToUser.do")
-    public ModelAndView addRoleToUser(@RequestParam(name = "userId") String userId, @RequestParam(name = "ids") String[] roleIds){
+    @RequestMapping(value = "/{id}/available", method = RequestMethod.POST)
+    public ModelAndView addRoleToUser(@PathVariable(name = "id") String userId, @RequestParam(name = "ids") String[] roleIds){
         userService.addRoleToUser(userId, roleIds);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/user/findAll.do");
+        modelAndView.setViewName("redirect:/user");
         return modelAndView;
     }
 }

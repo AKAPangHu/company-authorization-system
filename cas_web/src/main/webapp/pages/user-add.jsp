@@ -85,14 +85,13 @@
 				<li><a href="${pageContext.request.contextPath}/index.jsp"><i
 						class="fa fa-dashboard"></i> 首页</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/user/findAll.do">用户管理</a></li>
+					href="${pageContext.request.contextPath}/user">用户管理</a></li>
 				<li class="active">用户表单</li>
 			</ol>
 			</section>
 			<!-- 内容头部 /-->
 
-			<form action="${pageContext.request.contextPath}/user/save.do"
-				method="post">
+			<form method="post">
 				<!-- 正文区域 -->
 				<section class="content"> <!--产品信息-->
 

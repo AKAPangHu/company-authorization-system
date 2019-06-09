@@ -86,19 +86,17 @@
 				<li><a href="${pageContext.request.contextPath}/index.jsp"><i
 						class="fa fa-dashboard"></i> 首页</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/role/findAll.do">角色管理</a></li>
+					href="${pageContext.request.contextPath}/role">角色管理</a></li>
 				<li class="active">添加权限表单</li>
 			</ol>
 			</section>
 			<!-- 内容头部 /-->
 
-			<form
-				action="${pageContext.request.contextPath}/role/addPermissionToRole.do"
-				method="post">
+			<form method="post">
 				<!-- 正文区域 -->
 				<section class="content"> 
 				
-				<input type="hidden" name="roleId" value="${role.id}">
+<%--				<input type="hidden" name="roleId" value="${role.id}">--%>
 				
 					<table id="dataList"
 							class="table table-bordered table-striped table-hover dataTable">
@@ -117,7 +115,7 @@
 									<tr>
 										<td>
 										
-										<input name="ids" type="checkbox" value="${permission.id}">
+										<input class="icheckbox_square-blue" name="ids" type="checkbox" value="${permission.id}">
 										
 										</td>
 										<td>${permission.id}</td>

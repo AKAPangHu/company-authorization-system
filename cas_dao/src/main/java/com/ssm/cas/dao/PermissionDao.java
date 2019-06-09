@@ -26,6 +26,9 @@ public interface PermissionDao {
             "values(uuid(), #{permissionName}, #{url})")
     void save(Permission permission);
 
+    @Delete("delete from role_permission where permissionId = #{permissionId}")
+    void deleteInRolePermissionTableById(String permissionId);
+
     @Delete("delete from permission where id = #{id}")
     void deleteById(String id);
 }

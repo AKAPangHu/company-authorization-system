@@ -6,7 +6,9 @@ import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -26,7 +28,7 @@ public class PermissionController {
     }
 
 
-    @RequestMapping("/findAll.do")
+    @RequestMapping(method = RequestMethod.GET)
     public ModelAndView findAll(ModelAndView modelAndView){
         List<Permission> permissions = permissionService.findAll();
         modelAndView.addObject("permissionList", permissions);
@@ -34,8 +36,8 @@ public class PermissionController {
         return modelAndView;
     }
 
-    @RequestMapping("/findById.do")
-    public ModelAndView findById(String id){
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ModelAndView findById(@PathVariable String id){
         ModelAndView modelAndView = new ModelAndView();
         Permission permission = permissionService.findById(id);
         modelAndView.addObject(permission);
@@ -43,15 +45,20 @@ public class PermissionController {
         return modelAndView;
     }
 
-    @RequestMapping("/save.do")
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public String deletePermission(@PathVariable String id){
+        permissionService.deleteById(id);
+        return "redirect:/permission";
+    }
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
+    public String jumpToSave(){
+        return "permission-add";
+    }
+    @RequestMapping(value = "/new", method = RequestMethod.POST)
     public String save(Permission permission){
         permissionService.save(permission);
-        return "redirect:/permission/findAll.do";
+        return "redirect:/permission";
     }
 
-    @RequestMapping("/deletePermission.do")
-    public String deletePermission(String id){
-        permissionService.deleteById(id);
-        return "redirect:/permission/findAll.do";
-    }
+
 }

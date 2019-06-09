@@ -41,6 +41,9 @@ public class PermissionServiceImpl implements PermissionService {
 
     @Override
     public void deleteById(String id) {
+        //由于外键的关系，首先删除role_permission中的权限
+        permissionDao.deleteInRolePermissionTableById(id);
+
         permissionDao.deleteById(id);
     }
 }

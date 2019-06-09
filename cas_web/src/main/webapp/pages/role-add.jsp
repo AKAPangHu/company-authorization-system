@@ -84,14 +84,13 @@
 			<ol class="breadcrumb">
 				<li><a href="${pageContext.request.contextPath}/index.jsp"><i
 						class="fa fa-dashboard"></i> 首页</a></li>
-				<li><a href="${pageContext.request.contextPath}/role/findAll.do">角色管理</a></li>
+				<li><a href="${pageContext.request.contextPath}/role">角色管理</a></li>
 				<li class="active">角色表单</li>
 			</ol>
 			</section>
 			<!-- 内容头部 /-->
 
-			<form action="${pageContext.request.contextPath}/role/save.do"
-				method="post">
+			<form method="post">
 				<!-- 正文区域 -->
 				<section class="content"> <!--产品信息-->
 

@@ -33,19 +33,19 @@
 				<ul class="treeview-menu">
 
 					<li class="system-setting"><a
-						href="${pageContext.request.contextPath}/user/findAll.do"> <i
+						href="${pageContext.request.contextPath}/user"> <i
 							class="fa fa-circle-o"></i> 用户管理
 					</a></li>
 					<li class="system-setting"><a
-						href="${pageContext.request.contextPath}/role/findAll.do"> <i
+						href="${pageContext.request.contextPath}/role"> <i
 							class="fa fa-circle-o"></i> 角色管理
 					</a></li>
 					<li class="system-setting"><a
-						href="${pageContext.request.contextPath}/permission/findAll.do">
+						href="${pageContext.request.contextPath}/permission">
 							<i class="fa fa-circle-o"></i> 资源权限管理
 					</a></li>
 					<li class="system-setting"><a
-						href="${pageContext.request.contextPath}/sysLog/findAll.do"> <i
+						href="${pageContext.request.contextPath}/sysLog"> <i
 							class="fa fa-circle-o"></i> 访问日志
 					</a></li>
 				</ul></li>
@@ -57,7 +57,7 @@
 				<ul class="treeview-menu">
 
 					<li class="system-setting"><a
-						href="${pageContext.request.contextPath}/product/">
+						href="${pageContext.request.contextPath}/product">
 							<i class="fa fa-circle-o"></i> 产品管理
 					</a></li>
 					<li class="system-setting"><a

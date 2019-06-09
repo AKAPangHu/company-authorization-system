@@ -92,14 +92,10 @@
 			</section>
 			<!-- 内容头部 /-->
 
-			<form
-				action="${pageContext.request.contextPath}/user/addRoleToUser.do"
-				method="post">
+			<form method="post">
 				<!-- 正文区域 -->
-				<section class="content"> 
-				
-				<input type="hidden" name="userId" value="${user.id}">
-				
+				<section class="content">
+
 					<table id="dataList"
 							class="table table-bordered table-striped table-hover dataTable">
 							<thead>
@@ -117,7 +113,7 @@
 									<tr>
 										<td>
 										
-										<input name="ids" type="checkbox" value="${role.id}">
+										<input name="ids" type="checkbox" value="${role.id}" class="icheckbox_square-blue">
 										
 										</td>
 										<td>${role.id}</td>
