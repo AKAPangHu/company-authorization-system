@@ -28,20 +28,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/orders/**").hasRole("ADMIN")
-                .anyRequest().permitAll()
-            .and()
-            .formLogin()
+        http.formLogin()
                 .loginPage("/login.jsp")
                 .loginProcessingUrl("/login")
                 .successForwardUrl("/pages/main.jsp")
-                .failureForwardUrl("/pages/failer.jsp");
+                .failureForwardUrl("/pages/failer.jsp")
+                .permitAll();
         http.logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login.jsp")
-                .invalidateHttpSession(true);
+                .invalidateHttpSession(true)
+                .permitAll();
 
+        http.authorizeRequests()
+                .antMatchers("/login", "/logout").permitAll()
+                .antMatchers("/orders/**").hasRole("ADMIN")
+                .anyRequest().authenticated();
+
+        http.csrf()
+                .disable();
     }
 
     @Override
@@ -56,7 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    public void setbCryptPasswordEncoder(BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public void setBCryptPasswordEncoder(BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 }

@@ -3,7 +3,6 @@ package com.ssm.cas.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
@@ -12,7 +11,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  **/
 @Configuration
 @ComponentScan(basePackages = {"com.ssm.cas.service.impl", "com.ssm.cas.utils"})
-@ImportResource("classpath:/spring-security.xml")
 public class RootConfig {
     @Bean(name = "bCryptPasswordEncoder")
     public BCryptPasswordEncoder bCryptPasswordEncoder(){

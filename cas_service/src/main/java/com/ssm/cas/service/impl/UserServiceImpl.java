@@ -55,6 +55,7 @@ public class UserServiceImpl implements UserService {
         for (Role role : roles) {
             list.add(new SimpleGrantedAuthority("ROLE_" + role.getRoleName()));
         }
+        System.out.println(list);
         return list;
     }
 
