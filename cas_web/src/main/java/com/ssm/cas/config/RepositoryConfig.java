@@ -20,16 +20,18 @@ public class RepositoryConfig {
 
     @Bean
     public ComboPooledDataSource dataSource() throws SQLException {
-        ComboPooledDataSource dataSource = new ComboPooledDataSource();
-        System.out.println(dataSource.getDescription());
-        System.out.println(dataSource.getConnection());
-        return dataSource;
+        return new ComboPooledDataSource();
     }
 
     @Bean(name = "sqlSessionFactory")
     public SqlSessionFactory sqlSessionFactory() throws Exception {
         SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
         factoryBean.setDataSource(dataSource());
+
+        //配置分页插件的拦截器
+//        PageInterceptor[] pageInterceptors = {new PageInterceptor()};
+//        factoryBean.setPlugins(pageInterceptors);
+
         return factoryBean.getObject();
     }
 

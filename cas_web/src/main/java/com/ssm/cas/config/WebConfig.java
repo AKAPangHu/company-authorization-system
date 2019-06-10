@@ -26,9 +26,4 @@ public class WebConfig implements WebMvcConfigurer {
         registry.jsp("/pages/", ".jsp");
     }
 
-
-
-
-
-
 }
