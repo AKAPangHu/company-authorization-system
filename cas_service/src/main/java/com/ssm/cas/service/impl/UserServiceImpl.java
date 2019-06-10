@@ -16,8 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-import static sun.plugin2.os.windows.OSVERSIONINFOA.size;
-
 /**
  * @author: 胖虎
  * @date: 2019/5/26 21:38
@@ -32,6 +30,7 @@ public class UserServiceImpl implements UserService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final UserDao userDao;
 
+    @Autowired
     public UserServiceImpl(UserDao userDao, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userDao = userDao;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;

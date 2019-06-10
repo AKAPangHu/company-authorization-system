@@ -11,7 +11,7 @@ public class ServletInitializer extends
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[] { RepositoryConfig.class , SecurityConfig.class};
+        return new Class<?>[] { RepositoryConfig.class , SecurityConfig.class, RootConfig.class};
     }
 
     @Override
