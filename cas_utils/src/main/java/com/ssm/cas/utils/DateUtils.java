@@ -1,9 +1,7 @@
 package com.ssm.cas.utils;
 
-import org.springframework.context.annotation.Bean;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * @author: 胖虎
@@ -11,16 +9,7 @@ import java.util.Date;
  **/
 
 public class DateUtils {
-
-    private final DateUtils dateUtils = new DateUtils();
-
-    @Bean
-    public DateUtils getDateUtils() {
-        return dateUtils;
-    }
-
-    public static String dateToString(Date date, String pattern) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-        return simpleDateFormat.format(date);
+    public static String dateToString(LocalDateTime date) {
+        return date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 }

@@ -3,7 +3,7 @@ package com.ssm.cas.domain;
 import com.ssm.cas.utils.DateUtils;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -16,7 +16,7 @@ public class Orders {
     private String id;
     private String orderNum;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date orderTime;
+    private LocalDateTime orderTime;
     private String orderTimeStr;
     private int orderStatus;
     private String orderStatusStr;
@@ -72,16 +72,17 @@ public class Orders {
         this.orderNum = orderNum;
     }
 
-    public Date getOrderTime() {
+
+    public LocalDateTime getOrderTime() {
         return orderTime;
     }
 
-    public void setOrderTime(Date orderTime) {
+    public void setOrderTime(LocalDateTime orderTime) {
         this.orderTime = orderTime;
     }
 
     public String getOrderTimeStr() {
-        orderTimeStr = DateUtils.dateToString(orderTime, "yyyy-MM-dd HH:mm:ss");
+        orderTimeStr = DateUtils.dateToString(orderTime);
         return orderTimeStr;
     }
 

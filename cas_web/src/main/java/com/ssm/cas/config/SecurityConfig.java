@@ -34,6 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .successForwardUrl("/pages/main.jsp")
                 .failureForwardUrl("/pages/failer.jsp")
                 .permitAll();
+
         http.logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login.jsp")
@@ -42,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/login", "/logout").permitAll()
-                .antMatchers("/orders/**").hasRole("ADMIN")
+                .antMatchers("/syslog/**", "/user/**", "/permission/**", "/role/**").hasRole("ADMIN")
                 .anyRequest().authenticated();
 
         http.csrf()

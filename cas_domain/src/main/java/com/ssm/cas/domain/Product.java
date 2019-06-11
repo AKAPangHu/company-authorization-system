@@ -1,9 +1,9 @@
 package com.ssm.cas.domain;
 
-import com.ssm.cas.utils.DateUtils;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * 商品类
@@ -32,7 +32,7 @@ public class Product {
      */
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    private Date departureTime;
+    private LocalDateTime departureTime;
     private String departureTimeStr;
     /**
      * 商品价格
@@ -81,18 +81,19 @@ public class Product {
         this.departureCity = departureCity;
     }
 
-    public Date getDepartureTime() {
+
+    public LocalDateTime getDepartureTime() {
         return departureTime;
     }
 
-    public void setDepartureTime(Date departureTime) {
+    public void setDepartureTime(LocalDateTime departureTime) {
         this.departureTime = departureTime;
     }
 
     public String getDepartureTimeStr() {
         departureTimeStr = null;
         if (departureTime != null) {
-            departureTimeStr = DateUtils.dateToString(departureTime, "yyyy-MM-dd HH:mm");
+            departureTimeStr = departureTime.format(DateTimeFormatter.ISO_LOCAL_DATE);
         }
         return departureTimeStr;
     }
