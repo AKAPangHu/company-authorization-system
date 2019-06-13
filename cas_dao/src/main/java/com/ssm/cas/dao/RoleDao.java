@@ -3,6 +3,7 @@ package com.ssm.cas.dao;
 import com.ssm.cas.domain.Permission;
 import com.ssm.cas.domain.Role;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
  * @author: 胖虎
  * @date: 2019/5/28 15:59
  **/
+@Repository
 public interface RoleDao {
 
     @Select("select * from role where id in " +

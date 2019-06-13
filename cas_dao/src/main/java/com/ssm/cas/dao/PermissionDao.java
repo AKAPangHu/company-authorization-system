@@ -4,6 +4,7 @@ import com.ssm.cas.domain.Permission;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * @author: 胖虎
  * @date: 2019/5/28 21:33
  **/
+@Repository
 public interface PermissionDao {
     @Select("SELECT * FROM permission where id in " +
             "(SELECT permissionId FROM role_permission WHERE roleId = #{roleId})")

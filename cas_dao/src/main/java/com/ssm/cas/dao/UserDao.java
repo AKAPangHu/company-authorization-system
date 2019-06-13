@@ -3,6 +3,7 @@ package com.ssm.cas.dao;
 import com.ssm.cas.domain.Role;
 import com.ssm.cas.domain.UserInfo;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
  * @author: 胖虎
  * @date: 2019/5/26 21:41
  **/
+@Repository
 public interface UserDao {
     @Select("select * from users where username = #{username}")
     @Results({

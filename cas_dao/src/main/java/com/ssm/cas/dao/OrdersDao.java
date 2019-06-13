@@ -3,8 +3,8 @@ package com.ssm.cas.dao;
 import com.ssm.cas.domain.Member;
 import com.ssm.cas.domain.Orders;
 import com.ssm.cas.domain.Product;
-import com.ssm.cas.domain.Traveller;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -12,6 +12,7 @@ import java.util.List;
  * @author: 胖虎
  * @date: 2019/5/24 19:16
  **/
+@Repository
 public interface OrdersDao {
     @Select("select * from orders")
     @Results({

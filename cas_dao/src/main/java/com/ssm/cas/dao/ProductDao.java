@@ -4,9 +4,15 @@ import com.ssm.cas.domain.Product;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * @author: 胖虎
+ * @date: 2019/6/12 22:39
+ **/
+@Repository
 public interface ProductDao {
 
     @Select("select * from product where id=#{pid}")
