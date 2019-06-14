@@ -12,10 +12,7 @@
 
 
 
-<title>数据 - AdminLTE2定制版</title>
-<meta name="description" content="AdminLTE2定制版">
-<meta name="keywords" content="AdminLTE2定制版">
-
+<title>AdminLTE 2 | 订单列表</title>
 
 
 

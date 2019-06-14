@@ -4,7 +4,7 @@
 <!-- 页面头部 -->
 <header class="main-header">
 	<!-- Logo -->
-	<a href="all-admin-index.html" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
+	<a href="#" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
 		<span class="logo-mini"><b>DATA</b></span> <!-- logo for regular state and mobile devices -->
 		<span class="logo-lg"><b>企业</b>后台管理</span>
 	</a>

@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
@@ -16,6 +17,7 @@ import java.sql.SQLException;
  **/
 @Configuration
 @MapperScan(basePackages = {"com.ssm.cas.dao"}, sqlSessionFactoryRef = "sqlSessionFactory")
+@ComponentScan(basePackages = {"com.ssm.cas.dao"})
 public class RepositoryConfig {
 
     @Bean

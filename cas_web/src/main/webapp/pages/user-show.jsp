@@ -8,9 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>数据 - AdminLTE2定制版</title>
-    <meta name="description" content="AdminLTE2定制版">
-    <meta name="keywords" content="AdminLTE2定制版">
+    <title>AdminLTE 2 | 用户详情</title>
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta
@@ -144,9 +142,10 @@
 
                                 <tbody>
                                 <c:forEach items="${user.roles}" var="role" varStatus="vs1">
-                                    <tr data-tt-id="${vs1.index+1}" data-tt-parent-id="0"">
-                                        <td>${role.roleName }</td>
-                                        <td>${role.roleDesc }</td>
+                                    <tr data-tt-id="${vs1.index+1}" data-tt-parent-id="0"
+                                    ">
+                                    <td>${role.roleName }</td>
+                                    <td>${role.roleDesc }</td>
                                     </tr>
                                     <c:forEach items="${role.permissions}" var="permission" varStatus="vs2">
                                         <tr data-tt-id="${vs1.index+1}-${vs2.index+1}"

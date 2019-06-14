@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login.jsp")
                 .loginProcessingUrl("/login")
                 .successForwardUrl("/pages/main.jsp")
-                .failureForwardUrl("/pages/failer.jsp")
+                .failureForwardUrl("/pages/login-failed.jsp")
                 .permitAll();
 
         http.logout()

@@ -1,20 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <!-- 页面meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>数据 - AdminLTE2定制版</title>
-    <meta name="description" content="AdminLTE2定制版">
-    <meta name="keywords" content="AdminLTE2定制版">
-
+    <title>AdminLTE 2 | 500 Error</title>
     <!-- Tell the browser to be responsive to screen width -->
-    <meta
-            content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
-            name="viewport">
-
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/plugins/bootstrap/css/bootstrap.min.css">
@@ -60,69 +52,70 @@
           href="${pageContext.request.contextPath}/plugins/bootstrap-slider/slider.css">
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.css">
-    <style type="text/css">
-
-        .my-error-text{
-            /*margin: 200px;*/
-            font-size: 30px;
-            line-height: 30px;
-            margin-bottom: 20px;
-        }
-        .small_box{
-            width: 720px;
-            height: 100%;
-            position: relative;
-
-        }
-        .small_box .my_button{
-            position:absolute;
-            right: 34%;
-            bottom: -63px;
-        }
-    </style>
-
 </head>
-
-<body class="hold-transition skin-purple sidebar-mini">
-
+<body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-
-    <!-- 页面头部 -->
     <jsp:include page="header.jsp"></jsp:include>
     <!-- 页面头部 /-->
     <!-- 导航侧栏 -->
     <jsp:include page="aside.jsp"></jsp:include>
-    <!-- 导航侧栏 /-->
 
-    <!-- 内容区域 -->
-    <div class="wrapper">
-        <div class="content-wrapper">
-            <!-- 内容头部 -->
-            <!--产品信息-->
-            <section class="content">
-                <div class="error-page">
-                    <div class="small_box">
-                    <p class="my-error-text"> 登录失败，请检查您的用户名或密码</p>
-                    <button type="button" class="btn bg-default my_button"
-                            onclick="history.back(-1);">返回
-                    </button>
-                    </div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                500 Error Page
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="${pageContext.request.contextPath}/pages/main.jsp"><i class="fa fa-dashboard"></i> 首页</a>
+                </li>
+                <li class="active">500 error</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="error-page">
+                <h2 class="headline text-red">500</h2>
+
+                <div class="error-content">
+                    <h3><i class="fa fa-warning text-red"></i> 哎哟！服务器出了点小故障</h3>
+
+                    <p>
+                        我们将尽快修复问题<br/>
+                        你可以<a href="${pageContext.request.contextPath}/pages/main.jsp">回到首页</a>，或者在下面输入框里<b>搜索</b>一下
+                    </p>
+
+                    <form class="search-form">
+                        <div class="input-group">
+                            <input type="text" name="search" class="form-control" placeholder="Search">
+
+                            <div class="input-group-btn">
+                                <button type="submit" name="submit" class="btn btn-danger btn-flat"><i
+                                        class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.input-group -->
+                    </form>
                 </div>
-            </section>
-        </div>
-        <!-- 内容区域 /-->
-
-        <!-- 底部导航 -->
-        <footer class="main-footer">
-            <div class="pull-right hidden-xs">
-                <b>Version</b> 1.0.8
             </div>
-            <strong>Copyright &copy; 2014-2017 <a
-                    href="http://www.itcast.cn">研究院研发部</a>.
-            </strong> All rights reserved.
-        </footer>
-        <!-- 底部导航 /-->
+            <!-- /.error-page -->
+
+        </section>
+        <!-- /.content -->
     </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 2.4.0
+        </div>
+        <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+        reserved.
+    </footer>
 
 
     <script
@@ -209,9 +202,9 @@
     <script
             src="${pageContext.request.contextPath}/plugins/bootstrap-slider/bootstrap-slider.js"></script>
     <script
-            src="${pageContext.request.contextPath}/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
-
+            src="${pageContext.request.contextPath}/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
+    <script
+            src="${pageContext.request.contextPath}/plugins/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
 
 </body>
-
 </html>
