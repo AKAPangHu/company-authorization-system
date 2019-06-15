@@ -1,14 +1,13 @@
 package com.ssm.cas.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.ssm.cas.domain.Permission;
 import com.ssm.cas.service.PermissionService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -29,13 +28,15 @@ public class PermissionController {
 
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView findAll(ModelAndView modelAndView){
-        List<Permission> permissions = permissionService.findAll();
-        modelAndView.addObject("permissionList", permissions);
+    public ModelAndView findAll(@RequestParam(name = "page", defaultValue = "1") Integer page,
+                                @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("permission-list");
+        List<Permission> permission = permissionService.findAll(page, pageSize);
+        PageInfo pageInfo = new PageInfo(permission);
+        modelAndView.addObject("pageInfo", pageInfo);
         return modelAndView;
     }
-
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ModelAndView findById(@PathVariable String id){
         ModelAndView modelAndView = new ModelAndView();

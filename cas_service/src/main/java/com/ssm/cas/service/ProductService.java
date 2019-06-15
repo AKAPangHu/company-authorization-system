@@ -14,8 +14,10 @@ public interface ProductService {
      * 返回所有商品的列表
      * @return 所有商品
      * @throws Exception
+     * @param page
+     * @param pageSize
      */
-    List<Product> findAll() throws Exception;
+    List<Product> findAll(Integer page, Integer pageSize) throws Exception;
 
 
     /**

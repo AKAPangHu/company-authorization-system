@@ -1,12 +1,11 @@
 package com.ssm.cas.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.ssm.cas.dao.PermissionDao;
 import com.ssm.cas.domain.Permission;
 import com.ssm.cas.service.PermissionService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -25,7 +24,8 @@ public class PermissionServiceImpl implements PermissionService {
     }
 
     @Override
-    public List<Permission> findAll() {
+    public List<Permission> findAll(int page, int pageSize) {
+        PageHelper.startPage(page, pageSize);
         return permissionDao.findAll();
     }
 

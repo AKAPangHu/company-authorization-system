@@ -1,5 +1,6 @@
 package com.ssm.cas.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.ssm.cas.domain.Permission;
 import com.ssm.cas.domain.Role;
 import com.ssm.cas.service.RoleService;
@@ -26,13 +27,16 @@ public class RoleController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView findAll(){
+    public ModelAndView findAll(@RequestParam(name = "page", defaultValue = "1") Integer page,
+                                @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
-        List<Role> roles = roleService.findAll();
-        modelAndView.addObject("roleList", roles);
         modelAndView.setViewName("role-list");
+        List<Role> role = roleService.findAll(page, pageSize);
+        PageInfo pageInfo = new PageInfo(role);
+        modelAndView.addObject("pageInfo", pageInfo);
         return modelAndView;
     }
+
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ModelAndView findById(@PathVariable String id){

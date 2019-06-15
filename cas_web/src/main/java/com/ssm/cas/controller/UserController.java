@@ -1,5 +1,6 @@
 package com.ssm.cas.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.ssm.cas.domain.Role;
 import com.ssm.cas.domain.UserInfo;
 import com.ssm.cas.service.UserService;
@@ -27,12 +28,13 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView findAll() {
+    public ModelAndView findAll(@RequestParam(name = "page", defaultValue = "1") Integer page,
+                                @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
-        List<UserInfo> userInfos = userService.findAll();
-
-        modelAndView.addObject("userList", userInfos);
         modelAndView.setViewName("user-list");
+        List<UserInfo> userInfos = userService.findAll(page, pageSize);
+        PageInfo pageInfo = new PageInfo(userInfos);
+        modelAndView.addObject("pageInfo", pageInfo);
         return modelAndView;
     }
 

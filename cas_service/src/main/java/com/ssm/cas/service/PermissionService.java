@@ -9,7 +9,7 @@ import java.util.List;
  * @date: 2019/5/29 14:11
  **/
 public interface PermissionService {
-    List<Permission> findAll();
+    List<Permission> findAll(int page, int pageSize);
 
     Permission findById(String id);
 

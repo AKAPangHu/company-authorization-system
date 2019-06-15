@@ -1,5 +1,6 @@
 package com.ssm.cas.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.ssm.cas.dao.UserDao;
 import com.ssm.cas.domain.Role;
 import com.ssm.cas.domain.UserInfo;
@@ -59,7 +60,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserInfo> findAll() {
+    public List<UserInfo> findAll(Integer page, Integer pageSize) {
+        PageHelper.startPage(page, pageSize);
         return userDao.findAll();
     }
 

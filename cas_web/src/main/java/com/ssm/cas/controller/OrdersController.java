@@ -30,8 +30,8 @@ public class OrdersController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView findAll(@RequestParam(name = "page",required = false, defaultValue = "1") Integer page,
-                                @RequestParam(name = "pageSize", required = false, defaultValue = "10") Integer pageSize) throws Exception {
+    public ModelAndView findAll(@RequestParam(name = "page", defaultValue = "1") Integer page,
+                                @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("orders-page-list");
         List<Orders> orders = ordersService.findAll(page, pageSize);

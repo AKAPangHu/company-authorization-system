@@ -1,10 +1,10 @@
 package com.ssm.cas.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.ssm.cas.dao.RoleDao;
 import com.ssm.cas.domain.Permission;
 import com.ssm.cas.domain.Role;
 import com.ssm.cas.service.RoleService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,7 +25,8 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public List<Role> findAll() {
+    public List<Role> findAll(Integer page, Integer pageSize) {
+        PageHelper.startPage(page, pageSize);
         return roleDao.findAll();
     }
 

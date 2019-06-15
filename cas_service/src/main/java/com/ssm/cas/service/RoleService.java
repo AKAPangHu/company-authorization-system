@@ -2,8 +2,6 @@ package com.ssm.cas.service;
 
 import com.ssm.cas.domain.Permission;
 import com.ssm.cas.domain.Role;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,7 +11,7 @@ import java.util.List;
  **/
 
 public interface RoleService {
-    List<Role> findAll();
+    List<Role> findAll(Integer page, Integer pageSize);
 
     Role findById(String id);
 

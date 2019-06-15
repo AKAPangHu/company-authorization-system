@@ -294,15 +294,15 @@
                     <div class="box-tools pull-right">
                         <ul class="pagination">
                             <li>
-                                <a href="${pageContext.request.contextPath}/orders?page=1&size=${pageInfo.pageSize}" aria-label="Previous">首页</a>
+                                <a href="${pageContext.request.contextPath}/orders?page=1&pageSize=${pageInfo.pageSize}" aria-label="Previous">首页</a>
                             </li>
-                            <li><a href="${pageContext.request.contextPath}/orders?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}">上一页</a></li>
+                            <li><a href="${pageContext.request.contextPath}/orders?page=${pageInfo.pageNum-1}&pageSize=${pageInfo.pageSize}">上一页</a></li>
                            <c:forEach begin="1" end="${pageInfo.pages}" var="pageNum">
-							   <li><a href="${pageContext.request.contextPath}/orders?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a></li>
+							   <li><a href="${pageContext.request.contextPath}/orders?page=${pageNum}&pageSize=${pageInfo.pageSize}">${pageNum}</a></li>
 						   </c:forEach>
-                            <li><a href="${pageContext.request.contextPath}/orders?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}">下一页</a></li>
+                            <li><a href="${pageContext.request.contextPath}/orders?page=${pageInfo.pageNum+1}&pageSize=${pageInfo.pageSize}">下一页</a></li>
                             <li>
-                                <a href="${pageContext.request.contextPath}/orders?page=${pageInfo.pages}&size=${pageInfo.pageSize}" aria-label="Next">尾页</a>
+                                <a href="${pageContext.request.contextPath}/orders?page=${pageInfo.pages}&pageSize=${pageInfo.pageSize}" aria-label="Next">尾页</a>
                             </li>
                         </ul>
                     </div>
@@ -428,7 +428,7 @@
 			var pageSize = $("#changePageSize").val();
 
 			//向服务器发送请求，改变每页显示条数
-			location.href = "${pageContext.request.contextPath}/orders/findAll.do?page=1&size="
+			location.href = "${pageContext.request.contextPath}/orders?page=1&size="
 					+ pageSize;
 		}
 		$(document).ready(function() {

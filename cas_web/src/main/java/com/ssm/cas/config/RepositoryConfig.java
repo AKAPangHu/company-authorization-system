@@ -1,5 +1,6 @@
 package com.ssm.cas.config;
 
+import com.github.pagehelper.PageInterceptor;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import java.sql.SQLException;
+import java.util.Properties;
 
 /**
  * @author: 胖虎
@@ -31,8 +33,13 @@ public class RepositoryConfig {
         factoryBean.setDataSource(dataSource());
 
         //配置分页插件的拦截器
-//        PageInterceptor[] pageInterceptors = {new PageInterceptor()};
-//        factoryBean.setPlugins(pageInterceptors);
+        PageInterceptor pageInterceptor = new PageInterceptor();
+        Properties properties = new Properties();
+        properties.setProperty("reasonable", "true");
+        pageInterceptor.setProperties(properties);
+        PageInterceptor[] pageInterceptors = {pageInterceptor};
+
+        factoryBean.setPlugins(pageInterceptors);
 
         return factoryBean.getObject();
     }

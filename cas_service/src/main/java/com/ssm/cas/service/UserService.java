@@ -11,7 +11,7 @@ import java.util.List;
  * @date: 2019/5/26 21:37
  **/
 public interface UserService extends UserDetailsService {
-    List<UserInfo> findAll();
+    List<UserInfo> findAll(Integer page, Integer pageSize);
     void save(UserInfo userInfo);
     UserInfo findById(String id) throws Exception;
     List<Role> findOthersRoles(String userId);

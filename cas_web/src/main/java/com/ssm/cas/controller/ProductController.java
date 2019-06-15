@@ -1,9 +1,8 @@
 package com.ssm.cas.controller;
 
-import com.ssm.cas.dao.ProductDao;
+import com.github.pagehelper.PageInfo;
 import com.ssm.cas.domain.Product;
 import com.ssm.cas.service.ProductService;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,12 +28,14 @@ public class ProductController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView findAll() throws Exception {
-        ModelAndView mv = new ModelAndView();
-        List<Product> products = productService.findAll();
-        mv.addObject(products);
-        mv.setViewName("product-list");
-        return mv;
+    public ModelAndView findAll(@RequestParam(name = "page", defaultValue = "1") Integer page,
+                                @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("product-list");
+        List<Product> product = productService.findAll(page, pageSize);
+        PageInfo pageInfo = new PageInfo(product);
+        modelAndView.addObject("pageInfo", pageInfo);
+        return modelAndView;
     }
 
     @RequestMapping(value = "/new" , method = RequestMethod.GET)
