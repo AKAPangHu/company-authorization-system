@@ -35,7 +35,7 @@ public class RepositoryConfig {
         //配置分页插件的拦截器
         PageInterceptor pageInterceptor = new PageInterceptor();
         Properties properties = new Properties();
-        properties.setProperty("reasonable", "true");
+        properties.setProperty("reasonable", "false");
         pageInterceptor.setProperties(properties);
         PageInterceptor[] pageInterceptors = {pageInterceptor};
 

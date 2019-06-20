@@ -42,10 +42,6 @@
 						href="${pageContext.request.contextPath}/permission">
 							<i class="fa fa-circle-o"></i> 资源权限管理
 					</a></li>
-					<li class="system-setting"><a
-						href="${pageContext.request.contextPath}/sysLog"> <i
-							class="fa fa-circle-o"></i> 访问日志
-					</a></li>
 				</ul></li>
 			</security:authorize>
 			<li class="treeview"><a href="#"> <i class="fa fa-cube"></i>

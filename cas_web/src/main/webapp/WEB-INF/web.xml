@@ -5,39 +5,6 @@
          version="4.0">
 
 
-    <!-- 配置加载类路径的配置文件 -->
-<!--    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>classpath*:spring-security.xml</param-value>
-    </context-param>-->
-
-
- <!--   &lt;!&ndash; 配置监听器，在启动Web容器时，自动装配contextConfigLocation中的配置信息 &ndash;&gt;
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-    &lt;!&ndash; 配置监听器，监听request域对象的创建和销毁的 &ndash;&gt;
-    <listener>
-        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
-    </listener>-->
-
-    <!-- 前端控制器（加载classpath:springmvc.xml 服务器启动创建servlet） -->
-    <!--<servlet>
-        <servlet-name>dispatcherServlet</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        &lt;!&ndash; 配置初始化参数，创建完DispatcherServlet对象，加载springmvc.xml配置文件 &ndash;&gt;
-        <init-param>
-            <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:springmvc.xml</param-value>
-        </init-param>
-        &lt;!&ndash; 服务器启动的时候，让DispatcherServlet对象创建 &ndash;&gt;
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>dispatcherServlet</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
--->
     <!-- 解决中文乱码过滤器 -->
     <filter>
         <filter-name>characterEncodingFilter</filter-name>
@@ -63,12 +30,4 @@
         <location>/pages/500.jsp</location>
     </error-page>
 
-    <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
-        <welcome-file>index.htm</welcome-file>
-        <welcome-file>index.jsp</welcome-file>
-        <welcome-file>default.html</welcome-file>
-        <welcome-file>default.htm</welcome-file>
-        <welcome-file>default.jsp</welcome-file>
-    </welcome-file-list>
 </web-app>
